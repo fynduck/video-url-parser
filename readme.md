@@ -1,8 +1,8 @@
 # videoUrlParser
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Travis](https://img.shields.io/travis/fynduck/videoUrlParser.svg?style=flat-square)]()
-[![Total Downloads](https://img.shields.io/packagist/dt/fynduck/videoUrlParser.svg?style=flat-square)](https://packagist.org/packages/fynduck/videoUrlParser)
+[![Travis](https://img.shields.io/travis/fynduck/video-url-parser.svg?style=flat-square)]()
+[![Total Downloads](https://img.shields.io/packagist/dt/fynduck/video-url-parser.svg?style=flat-square)](https://packagist.org/packages/fynduck/video-url-parser)
 
 ## Install
 `composer require fynduck/videoUrlParser`
