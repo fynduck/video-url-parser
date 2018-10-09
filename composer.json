@@ -1,0 +1,41 @@
+{
+    "name": "fynduck/videoUrlParser",
+    "description": "A description for videoUrlParser.",
+    "type": "package",
+    "license": "MIT",
+    "keywords": [
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "fynduck",
+            "email": "stason.k12@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "5.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fynduck\\VideoUrlParser\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fynduck\\VideoUrlParser\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fynduck\\VideoUrlParser\\VideoUrlParserServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.6"
+    }
+}
