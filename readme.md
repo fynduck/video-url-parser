@@ -1,14 +1,24 @@
-# videoUrlParser
+# VideoUrlParser
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Travis](https://img.shields.io/travis/fynduck/video-url-parser.svg?style=flat-square)]()
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/fynduck/video-url-parser.svg?style=flat-square)](https://packagist.org/packages/fynduck/video-url-parser)
 [![Total Downloads](https://img.shields.io/packagist/dt/fynduck/video-url-parser.svg?style=flat-square)](https://packagist.org/packages/fynduck/video-url-parser)
 
 ## Install
-`composer require fynduck/videoUrlParser`
+`composer require fynduck/video-url-parser`
 
-## Usage
-Write a few lines about the usage of this package.
+## Check is valid video url (youtube, rutube, vimeo)
+```
+$returnServiceNameIfValid = (new VideoUrlParse())->isValidURL('url') //invalid return false
+```
+
+## Get src link (ex. for iframe)
+```
+$srcLink = (new VideoUrlParse())->returnSrcForEmbed($url, $domain = false)
+```
+if your know domain this link (youtube, rutube, vimeo), put domain.
+
+if your don't know domain, put url only, script will find domain name (if is correct)
 
 ## Testing
 Run the tests with:
@@ -17,14 +27,8 @@ Run the tests with:
 vendor/bin/phpunit
 ```
 
-## Changelog
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security
-If you discover any security-related issues, please email DummyAuthorEmail instead of using the issue tracker.
 
 ## License
 The MIT License (MIT). Please see [License File](/LICENSE.md) for more information.

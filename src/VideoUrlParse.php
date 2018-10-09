@@ -126,6 +126,11 @@ class VideoUrlParse
                     $src = $this->vimeoSrc($url);
                     break;
             }
+        } else {
+            $correctUrl = $this->checkIsUrlCorrect($url);
+
+            if ($correctUrl)
+                $this->returnSrcForEmbed($url, $correctUrl);
         }
 
         return $src;
