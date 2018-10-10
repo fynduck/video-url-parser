@@ -112,25 +112,25 @@ class VideoUrlParse
      */
     public function returnSrcForEmbed($url, $domain = false)
     {
-        $src = $url;
-
-        if ($domain) {
-            switch ($domain) {
-                case 'youtube':
-                    $src = $this->youtubeSrc($url);
-                    break;
-                case 'rutube':
-                    $src = $this->rutubeSrc($url);
-                    break;
-                case 'vimeo':
-                    $src = $this->vimeoSrc($url);
-                    break;
-            }
-        } else {
+        if (!$domain) {
             $correctUrl = $this->checkIsUrlCorrect($url);
 
             if ($correctUrl)
-                $this->returnSrcForEmbed($url, $correctUrl);
+                return $this->returnSrcForEmbed($url, $correctUrl);
+        }
+
+        switch ($domain) {
+            case 'youtube':
+                $src = $this->youtubeSrc($url);
+                break;
+            case 'rutube':
+                $src = $this->rutubeSrc($url);
+                break;
+            case 'vimeo':
+                $src = $this->vimeoSrc($url);
+                break;
+            default:
+                $src = $url;
         }
 
         return $src;
