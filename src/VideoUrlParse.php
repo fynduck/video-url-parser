@@ -17,11 +17,11 @@ class VideoUrlParse
      * @param string $url
      * @return boolean
      */
-    public function isValidURL($url)
+    public static function isValidURL($url)
     {
         $result = preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url);
         if ($result)
-            $result = $this->checkIsUrlCorrect($url);
+            $result = self::checkIsUrlCorrect($url);
 
         return $result;
     }
@@ -31,18 +31,18 @@ class VideoUrlParse
      * @param string $url
      * @return boolean
      */
-    public function checkIsUrlCorrect($url)
+    public static function checkIsUrlCorrect($url)
     {
         switch ($url) {
             case str_contains($url, 'rutube.ru'):
-                $result = $this->isCorrectRutube($url);
+                $result = self::isCorrectRutube($url);
                 break;
             case str_contains($url, 'youtube.com'):
             case str_contains($url, 'youtu.be'):
-                $result = $this->isCorrectYoutube($url);
+                $result = self::isCorrectYoutube($url);
                 break;
             case str_contains($url, 'vimeo.com'):
-                $result = $this->isCorrectVimeo($url);
+                $result = self::isCorrectVimeo($url);
                 break;
             default:
                 $result = false;
@@ -56,7 +56,7 @@ class VideoUrlParse
      * @param $url
      * @return bool
      */
-    protected function isCorrectRutube($url)
+    protected static function isCorrectRutube($url)
     {
         $urlParams = array_filter(explode('/', $url));
 
@@ -73,7 +73,7 @@ class VideoUrlParse
      * @param $url
      * @return bool
      */
-    protected function isCorrectYoutube($url)
+    protected static function isCorrectYoutube($url)
     {
         $urlParams = array_filter(explode('/', $url));
         if (isset($urlParams[3])) {
@@ -92,7 +92,7 @@ class VideoUrlParse
      * @param $url
      * @return bool
      */
-    protected function isCorrectVimeo($url)
+    protected static function isCorrectVimeo($url)
     {
         $urlParams = array_filter(explode('/', $url));
 
@@ -110,24 +110,24 @@ class VideoUrlParse
      * @param bool $domain
      * @return string
      */
-    public function returnSrcForEmbed($url, $domain = false)
+    public static function returnSrcForEmbed($url, $domain = false)
     {
         if (!$domain) {
-            $correctUrl = $this->checkIsUrlCorrect($url);
+            $correctUrl = self::checkIsUrlCorrect($url);
 
             if ($correctUrl)
-                return $this->returnSrcForEmbed($url, $correctUrl);
+                return self::returnSrcForEmbed($url, $correctUrl);
         }
 
         switch ($domain) {
             case 'youtube':
-                $src = $this->youtubeSrc($url);
+                $src = self::youtubeSrc($url);
                 break;
             case 'rutube':
-                $src = $this->rutubeSrc($url);
+                $src = self::rutubeSrc($url);
                 break;
             case 'vimeo':
-                $src = $this->vimeoSrc($url);
+                $src = self::vimeoSrc($url);
                 break;
             default:
                 $src = $url;
@@ -141,7 +141,7 @@ class VideoUrlParse
      * @param $url
      * @return string
      */
-    protected function youtubeSrc($url)
+    protected static function youtubeSrc($url)
     {
         $getParams = [];
         parse_str(parse_url($url, PHP_URL_QUERY), $getParams);
@@ -159,7 +159,7 @@ class VideoUrlParse
      * @param $url
      * @return string
      */
-    protected function rutubeSrc($url)
+    protected static function rutubeSrc($url)
     {
         $checkEmbed = array_filter(explode('/', $url));
 
@@ -175,7 +175,7 @@ class VideoUrlParse
      * @param $url
      * @return string
      */
-    protected function vimeoSrc($url)
+    protected static function vimeoSrc($url)
     {
         $checkEmbed = array_filter(explode('/', $url));
 
