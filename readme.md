@@ -20,13 +20,6 @@ if your know domain this link (youtube, rutube, vimeo), put domain.
 
 if your don't know domain, put url only, script will find domain name (if is correct)
 
-## Testing
-Run the tests with:
-
-``` bash
-vendor/bin/phpunit
-```
-
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
