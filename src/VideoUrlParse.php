@@ -80,6 +80,8 @@ class VideoUrlParse
             $checkWatch = explode('?', $urlParams[3]);
             if ($urlParams[3] == 'embed' && isset($urlParams[4]) && $urlParams[4])
                 return 'youtube';
+            elseif ($urlParams[2] == 'youtu.be' && isset($urlParams[3]) && $urlParams[3])
+                return 'youtube';
             elseif ($checkWatch[0] == 'watch' && isset($checkWatch[1]) && (explode('=', $checkWatch[1])[0] == 'v'))
                 return 'youtube';
         }
